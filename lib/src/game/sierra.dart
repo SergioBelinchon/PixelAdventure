@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
 class Sierra extends SpriteAnimationComponent with HasGameRef<PixelAdventure>
 {

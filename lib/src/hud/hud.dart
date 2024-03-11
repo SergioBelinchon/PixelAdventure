@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
 
 

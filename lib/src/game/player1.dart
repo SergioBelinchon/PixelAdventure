@@ -3,28 +3,29 @@ import 'dart:core';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/services.dart';
-import 'package:pixeladventure/components/checkpoint.dart';
-import 'package:pixeladventure/components/custom_hitbox.dart';
-import 'package:pixeladventure/components/fruit.dart';
-import 'package:pixeladventure/components/player1.dart';
-import 'package:pixeladventure/components/sierra.dart';
-import 'package:pixeladventure/components/utils.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/game/player2.dart';
+import 'package:pixeladventure/src/game/sierra.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
+import '../colisiones/custom_hitbox.dart';
+import '../colisiones/utils.dart';
+import 'checkpoint.dart';
 import 'chicken.dart';
-import 'colision_bloque.dart';
+import '../colisiones/colision_bloque.dart';
+import 'fruit.dart';
 
 enum PlayerState { idle, running, jumping, falling, hit, appearing, disappearing }
 
-class Player2 extends SpriteAnimationGroupComponent
+class Player1 extends SpriteAnimationGroupComponent
     with HasGameRef<PixelAdventure>, KeyboardHandler, CollisionCallbacks {
   String character;
 
-  Player2({
+  Player1({
     position,
-    this.character = 'Mask Dude',
+    this.character = 'Pink Man',
   }) : super(position: position);
 
   final double stepTime = 0.05;
@@ -41,7 +42,7 @@ class Player2 extends SpriteAnimationGroupComponent
   final double _fuerzaSalto = 260;
   final double _terminalVelocity = 300;
 
-  int lives = 3;
+
   double horizontalMovement = 0;
   double moveSpeed = 100;
   Vector2 startingPosition = Vector2.zero();
@@ -97,13 +98,14 @@ class Player2 extends SpriteAnimationGroupComponent
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     horizontalMovement = 0;
-    final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyA);
-    final isRightKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyD);
+    final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.arrowLeft);
+    final isRightKeyPressed = keysPressed.contains(
+        LogicalKeyboardKey.arrowRight);
 
     horizontalMovement += isLeftKeyPressed ? -1 : 0;
     horizontalMovement += isRightKeyPressed ? 1 : 0;
 
-    haSaltado = keysPressed.contains(LogicalKeyboardKey.keyS);
+    haSaltado = keysPressed.contains(LogicalKeyboardKey.space);
 
     return super.onKeyEvent(event, keysPressed);
   }
@@ -115,9 +117,9 @@ class Player2 extends SpriteAnimationGroupComponent
     if (!reachedCheckpoint) {
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Sierra) _respawn();
-      if (other is Chicken) other.collidedWithPlayer2();
+      if (other is Chicken) other.collidedWithPlayer1();
       if (other is Checkpoint) _reachedCheckpoint();
-      if (other is Player1) other.collidedWithPlayer();
+      if (other is Player2) other.collidedWithPlayer();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -322,10 +324,30 @@ class Player2 extends SpriteAnimationGroupComponent
 
 
   void collidedWithEnemy() {
-    _respawn();
+    if (!gotHit) {
+      game.health--;
+      gotHit = true;
+    }
+    add(
+      OpacityEffect.fadeOut(
+        EffectController(
+          alternate: true,
+          duration: 0.1,
+          repeatCount: 5,
+        ),
+      )
+        ..onComplete = () {
+          gotHit = false;
+        },
+    );
   }
 
-  void collidedWithPlayer() {
-    _respawn();
+
+  void collidedWithPlayer()
+  {
+    collidedWithEnemy();
   }
 }
+
+
+

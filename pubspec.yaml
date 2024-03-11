@@ -39,6 +39,7 @@ dependencies:
   flame_tiled: ^1.16.0
   flame_forge2d: ^0.16.0+2
   flame_audio: ^2.1.5
+  firebase_core: ^2.24.2
 
 dev_dependencies:
   flutter_test:

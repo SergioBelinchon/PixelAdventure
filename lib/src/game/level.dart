@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:pixeladventure/components/colision_bloque.dart';
-import 'package:pixeladventure/components/fondo_tile.dart';
-import 'package:pixeladventure/components/fruit.dart';
-import 'package:pixeladventure/components/player2.dart';
-import 'package:pixeladventure/components/sierra.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/game/player2.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
+import '../colisiones/colision_bloque.dart';
+import 'sierra.dart';
 import 'checkpoint.dart';
 import 'chicken.dart';
+import 'fondo_tile.dart';
+import 'fruit.dart';
 import 'player1.dart';
 
 class Level extends World with HasGameRef<PixelAdventure>

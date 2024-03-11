@@ -4,9 +4,9 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:pixeladventure/components/player1.dart';
-import 'package:pixeladventure/components/player2.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/game/player1.dart';
+import 'package:pixeladventure/src/game/player2.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
 enum State { idle, run, hit }
 

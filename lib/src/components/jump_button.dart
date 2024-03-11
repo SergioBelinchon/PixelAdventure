@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
 class JumpButton extends SpriteComponent with HasGameRef<PixelAdventure>,
 TapCallbacks

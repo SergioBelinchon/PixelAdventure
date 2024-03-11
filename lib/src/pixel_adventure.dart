@@ -3,12 +3,11 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pixeladventure/components/jump_button.dart';
-import 'package:pixeladventure/components/level.dart';
-
-import 'components/hud.dart';
-import 'components/player1.dart';
-import 'components/player2.dart';
+import 'package:pixeladventure/src/game/player2.dart';
+import 'package:pixeladventure/src/hud/hud.dart';
+import 'components/jump_button.dart';
+import 'game/level.dart';
+import 'game/player1.dart';
 
 class PixelAdventure extends FlameGame
     with

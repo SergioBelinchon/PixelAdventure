@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:pixeladventure/components/custom_hitbox.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
+
+import '../colisiones/custom_hitbox.dart';
 
 class Fruit extends SpriteAnimationComponent
     with HasGameRef<PixelAdventure>, CollisionCallbacks

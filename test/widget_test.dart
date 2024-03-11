@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:pixeladventure/main.dart';
-import 'package:pixeladventure/pixel_adventure.dart';
+import 'package:pixeladventure/src/pixel_adventure.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
