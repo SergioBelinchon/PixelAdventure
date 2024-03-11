@@ -3,6 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pixeladventure/src/game/player2.dart';
 import 'package:pixeladventure/src/hud/hud.dart';
 import 'components/jump_button.dart';
@@ -20,7 +21,7 @@ class PixelAdventure extends FlameGame
   int health = 3;
   late CameraComponent camara;
   Player1 player1 = Player1(character: 'Pink Man');
-  Player2 player2 = Player2(character: 'Mask Dude');
+  //Player2 player2 = Player2(character: 'Mask Dude');
   late JoystickComponent joystick;
   bool showControls = false;
   bool playSounds = false;
@@ -86,17 +87,17 @@ class PixelAdventure extends FlameGame
       case JoystickDirection.upLeft:
       case JoystickDirection.downLeft:
         player1.horizontalMovement = -1;
-        player2.horizontalMovement = -1;
+        //player2.horizontalMovement = -1;
         break;
       case JoystickDirection.right:
       case JoystickDirection.upRight:
       case JoystickDirection.downRight:
         player1.horizontalMovement = 1;
-        player2.horizontalMovement = 1;
+        //player2.horizontalMovement = 1;
         break;
       default:
         player1.horizontalMovement = 0;
-        player2.horizontalMovement = 0;
+        //player2.horizontalMovement = 0;
         //Inactivo
         break;
     }
@@ -124,7 +125,7 @@ class PixelAdventure extends FlameGame
     async {
       Level world = Level(
         player1: player1,
-        player2: player2,
+        //player2: player2,
         levelName: levelNames[currentLevelIndex],
       );
 
@@ -142,3 +143,15 @@ class PixelAdventure extends FlameGame
 
   }
 }
+/*
+class FlameWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: PixelAdventure(),
+      ),
+    );
+  }
+}
+*/

@@ -28,7 +28,7 @@ TapCallbacks
   void onTapDown(TapDownEvent event)
   {
     game.player1.haSaltado = true;
-    game.player2.haSaltado = true;
+    //game.player2.haSaltado = true;
     super.onTapDown(event);
   }
 
@@ -36,7 +36,7 @@ TapCallbacks
   void onTapUp(TapUpEvent event)
   {
     game.player1.haSaltado = false;
-    game.player2.haSaltado = false;
+   // game.player2.haSaltado = false;
     super.onTapUp(event);
   }
 }

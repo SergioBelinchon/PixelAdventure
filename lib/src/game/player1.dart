@@ -119,7 +119,7 @@ class Player1 extends SpriteAnimationGroupComponent
       if (other is Sierra) _respawn();
       if (other is Chicken) other.collidedWithPlayer1();
       if (other is Checkpoint) _reachedCheckpoint();
-      if (other is Player2) other.collidedWithPlayer();
+      //if (other is Player2) other.collidedWithPlayer();
     }
     super.onCollisionStart(intersectionPoints, other);
   }

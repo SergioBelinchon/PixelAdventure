@@ -16,9 +16,23 @@ void main() async
 
    await Flame.device.fullScreen();
    await Flame.device.setLandscape();
+/*
+  Widget initialWidget = LoginView();
+  // Aquí puedes implementar la lógica condicional para decidir qué widget mostrar
+  // Por ejemplo, si existe un usuario logueado
+  bool userLoggedIn = false; // Aquí debes añadir la lógica de si el usuario está logueado
+
+  if (userLoggedIn) {
+    initialWidget = PixelAdventure() as Widget;
+  }
+
+  runApp(MaterialApp(
+    home: initialWidget,
+  ));
+*/
 
   PixelAdventure game = PixelAdventure();
-  runApp(GameWidget(game: kDebugMode? PixelAdventure() : game), 
+  runApp(GameWidget(game: kDebugMode? PixelAdventure() : game),
   );
 }
 

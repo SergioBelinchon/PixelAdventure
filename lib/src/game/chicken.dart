@@ -5,7 +5,6 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:pixeladventure/src/game/player1.dart';
-import 'package:pixeladventure/src/game/player2.dart';
 import 'package:pixeladventure/src/pixel_adventure.dart';
 
 enum State { idle, run, hit }
@@ -37,7 +36,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
 
 
   late final Player1 player1;
-  late final Player2 player2;
+  //late final Player2 player2;
   late final SpriteAnimation _idleAnimation;
   late final SpriteAnimation _hitAnimation;
   late final SpriteAnimation _runAnimation;
@@ -47,7 +46,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
   {
     //debugMode = true;
     player1 = game.player1;
-    player2 = game.player2;
+    //player2 = game.player2;
 
     add(
       RectangleHitbox(
@@ -110,7 +109,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
     velocity.x = 0;
 
     double player1Offset = (player1.scale.x > 0) ? 0 : -player1.width;
-    double player2Offset = (player2.scale.x > 0) ? 0 : -player2.width;
+    //double player2Offset = (player2.scale.x > 0) ? 0 : -player2.width;
     double chickenOffset = (scale.x > 0) ? 0 : -width;
 
     if(player1InRange())
@@ -120,13 +119,13 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
         velocity.x = targetDirection * runSpeed;
       }
 
-    if(player2InRange())
+    /*if(player2InRange())
     {
       targetDirection =
       (player2.x + player1Offset < position.x + chickenOffset) ? -1 : 1;
       velocity.x = targetDirection * runSpeed;
     }
-
+*/
     moveDirection = lerpDouble(moveDirection, targetDirection, 0.1) ?? 1;
     
     position.x += velocity.x * dt;
@@ -141,7 +140,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
     player1.y + player1.height > position.y &&
     player1.y < position.y + height;
   }
-
+/*
   bool player2InRange()
   {
     double playerOffset = (player2.scale.x > 0) ? 0 : - player2.width;
@@ -151,7 +150,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
         player2.y + player2.height > position.y &&
         player2.y < position.y + height;
   }
-
+*/
   void _updateState()
   {
     current = (velocity.x != 0) ? State.run : State.idle;
@@ -183,7 +182,7 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
 
       }
   }
-
+/*
   void collidedWithPlayer2() async
   {
     if(player2.velocity.y > 0 && player2.y + player2.height > position.y)
@@ -203,4 +202,6 @@ with HasGameRef<PixelAdventure>, CollisionCallbacks
       player2.collidedWithEnemy();
     }
   }
+  */
+
 }
